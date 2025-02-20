@@ -49,3 +49,31 @@ button:hover {
 #results {
     margin-top: 20px;
 }
+.video-result {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+    background: #222;
+    border-radius: 5px;
+}
+
+.video-result img {
+    width: 80px;
+    height: 45px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.video-result p {
+    flex: 1;
+    margin: 0;
+    font-size: 14px;
+}
+
+.video-result button {
+    background-color: #ffcc00;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
