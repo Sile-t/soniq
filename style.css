@@ -23,3 +23,29 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
 }
+/* Search Bar Styling */
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #e6b800;
+}
+
+#results {
+    margin-top: 20px;
+}
