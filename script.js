@@ -1,4 +1,4 @@
-const apiKey = "AIzaSyBUsymhwtl1RFiB2PkhJ3VfuvBf3JTTxb4"; // Replace with your API key
+const apiKey = "AIzaSyDrYCPuQ0sRlYXe2MSreVt8akUJh79-XKQ"; // Replace with your API key
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const resultsDiv = document.getElementById("results");
@@ -18,7 +18,7 @@ document.getElementById('search-button').addEventListener('click', () => {
 
 // Function to search YouTube
 function searchYouTube(query) {
-    const API_KEY = 'AIzaSyBUsymhwtl1RFiB2PkhJ3VfuvBf3JTTxb4';  // Replace with your YouTube API Key
+    const API_KEY = 'AIzaSyDrYCPuQ0sRlYXe2MSreVt8akUJh79-XKQ';  // Replace with your YouTube API Key
     const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=${API_KEY}`;
 
     fetch(searchUrl)
