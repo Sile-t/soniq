@@ -42,5 +42,18 @@ function displayResults(videos) {
 }
 
 function playVideo(videoId) {
-    alert("Playing video: " + videoId);
+    // Remove any existing iframe (to avoid multiple players)
+    const existingIframe = document.querySelector("iframe");
+    if (existingIframe) {
+        existingIframe.remove();
+    }
+    // Create iframe to embed the video
+    const iframe = document.createElement("iframe");
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&modestbranding=1&rel=0`;
+    iframe.width = "0";
+    iframe.height = "0";
+    iframe.style.visibility = "hidden";  // Keep the video hidden but still play audio
+
+    // Append the iframe to the body
+    document.body.appendChild(iframe);
 }
