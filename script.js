@@ -66,6 +66,7 @@ function playVideo(videoId) {
     iframe.width = "0";
     iframe.height = "0";
     iframe.style.visibility = "hidden";  // Keep the video hidden but still play audio
+    iframe.setAttribute('allow', 'autoplay');  // Explicitly allow autoplay
     
     console.log("Iframe created:", iframe);  // Debugging line to check iframe creation
 
