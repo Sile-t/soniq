@@ -10,46 +10,56 @@ searchButton.addEventListener("click", () => {
     }
 });
 
-function searchYouTube(query) {
-    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query)}&key=${apiKey}`;
+// Event listener for search button
+document.getElementById('search-button').addEventListener('click', () => {
+    const query = document.getElementById('search-input').value;
+    searchYouTube(query);
+});
 
-    fetch(url)
+// Function to search YouTube
+function searchYouTube(query) {
+    const API_KEY = 'YOUR_YOUTUBE_API_KEY';  // Replace with your YouTube API Key
+    const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=${API_KEY}`;
+
+    fetch(searchUrl)
         .then(response => response.json())
         .then(data => {
-            displayResults(data.items);
+            displaySearchResults(data.items);  // Pass search results to display function
         })
-        .catch(error => console.error("Error fetching data:", error));
+        .catch(error => console.error('Error fetching data:', error));
 }
 
-function displayResults(videos) {
-    resultsDiv.innerHTML = ""; // Clear previous results
+// Function to display search results
+function displaySearchResults(videos) {
+    const resultsContainer = document.getElementById('results');
+    resultsContainer.innerHTML = '';  // Clear previous results
 
     videos.forEach(video => {
+        const listItem = document.createElement('div');
+        const playButton = document.createElement('button');
+        playButton.textContent = 'Play';
+        
+        // Get video ID and create a play button with correct video ID
         const videoId = video.id.videoId;
-        const title = video.snippet.title;
-        const thumbnail = video.snippet.thumbnails.default.url;
-
-        const videoElement = document.createElement("div");
-        videoElement.classList.add("video-result");
-        videoElement.innerHTML = `
-            <img src="${thumbnail}" alt="${title}">
-            <p>${title}</p>
-            <button onclick="playVideo('${videoId}')">Play</button>
-        `;
-
-        resultsDiv.appendChild(videoElement);
+        playButton.onclick = () => playVideo(videoId);
+        
+        listItem.appendChild(playButton);
+        listItem.appendChild(document.createTextNode(video.snippet.title));  // Display video title
+        resultsContainer.appendChild(listItem);
     });
 }
 
+// Function to play video
 function playVideo(videoId) {
     // Remove any existing iframe (to avoid multiple players)
     const existingIframe = document.querySelector("iframe");
     if (existingIframe) {
         existingIframe.remove();
     }
+
     // Create iframe to embed the video
     const iframe = document.createElement("iframe");
-    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&modestbranding=1&rel=0`;
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&modestbranding=1&rel=0&mute=0&enablejsapi=1`;
     iframe.width = "0";
     iframe.height = "0";
     iframe.style.visibility = "hidden";  // Keep the video hidden but still play audio
