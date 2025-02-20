@@ -41,6 +41,7 @@ function displaySearchResults(videos) {
         
         // Get video ID and create a play button with correct video ID
         const videoId = video.id.videoId;
+        console.log(`Video ID: ${videoId}`);  // Debugging line to check video ID
         playButton.onclick = () => playVideo(videoId);
         
         listItem.appendChild(playButton);
@@ -51,6 +52,8 @@ function displaySearchResults(videos) {
 
 // Function to play video
 function playVideo(videoId) {
+    console.log(`Attempting to play video with ID: ${videoId}`);  // Debugging line to check video ID passed to playVideo
+    
     // Remove any existing iframe (to avoid multiple players)
     const existingIframe = document.querySelector("iframe");
     if (existingIframe) {
@@ -63,6 +66,8 @@ function playVideo(videoId) {
     iframe.width = "0";
     iframe.height = "0";
     iframe.style.visibility = "hidden";  // Keep the video hidden but still play audio
+    
+    console.log("Iframe created:", iframe);  // Debugging line to check iframe creation
 
     // Append the iframe to the body
     document.body.appendChild(iframe);
