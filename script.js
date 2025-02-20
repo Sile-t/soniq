@@ -18,7 +18,7 @@ document.getElementById('search-button').addEventListener('click', () => {
 
 // Function to search YouTube
 function searchYouTube(query) {
-    const API_KEY = 'YOUR_YOUTUBE_API_KEY';  // Replace with your YouTube API Key
+    const API_KEY = 'AIzaSyBUsymhwtl1RFiB2PkhJ3VfuvBf3JTTxb4';  // Replace with your YouTube API Key
     const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=${API_KEY}`;
 
     fetch(searchUrl)
@@ -62,10 +62,10 @@ function playVideo(videoId) {
 
     // Create iframe to embed the video
     const iframe = document.createElement("iframe");
-    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&modestbranding=1&rel=0&mute=0&enablejsapi=1`;
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&modestbranding=1&rel=0&mute=0&enablejsapi=1`;
     iframe.width = "0";
     iframe.height = "0";
-    iframe.style.visibility = "hidden";  // Keep the video hidden but still play audio
+    //iframe.style.visibility = "hidden";  // Keep the video hidden but still play audio
     iframe.setAttribute('allow', 'autoplay');  // Explicitly allow autoplay
     
     console.log("Iframe created:", iframe);  // Debugging line to check iframe creation
